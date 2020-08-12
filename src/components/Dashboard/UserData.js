@@ -6,15 +6,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
+import { connect } from 'react-redux';
 
-import { connect } from 'react-redux'
-
-
-// const useStyles = makeStyles((theme) => ({
-//     seeMore: {
-//         marginTop: theme.spacing(3),
-//     },
-// }));
 
 function Orders(props) {
 

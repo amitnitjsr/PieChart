@@ -207,7 +207,6 @@ const Dashboard = (props) => {
     );
 }
 
-// export default Dashboard;
 const mapStateToProps = state => {
     return {
         list: state.list,

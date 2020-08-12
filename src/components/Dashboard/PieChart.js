@@ -1,22 +1,24 @@
 import React from "react";
 import Chart from "react-google-charts";
 import newData from '../../Asset/data/data';
-import './common.css';
 
+const getNormalizeData = (data) => {
+    let tempData = [['Population', 'Yearly Population']];
+    data.forEach(element => {
+        tempData.push([element.city, element.people.male + element.people.female])
+    });
+    return tempData;
+}
 
 class Charts1 extends React.Component {
     state = {
-        dataOf: []
+        dataOf: [[]]
     }
+
     componentDidMount() {
-        let tmp = [];
-        tmp = newData.map((val) => {
-            let t = val.city + ',' + val.state + ',' + val.people.male + ',' + val.people.female;
-            return t;
-        });
-        console.log('new...', tmp)
-        this.setState({ dataOf: tmp })
+        this.setState({ dataOf: getNormalizeData(newData) })
     }
+
     render() {
         return (
             <div >
@@ -25,12 +27,7 @@ class Charts1 extends React.Component {
                     height={'300px'}
                     chartType="PieChart"
                     loader={<div>Loading Chart</div>}
-                    data={[
-                        ['Population', 'Early Population'],
-                        ['Lucknow', 4200],
-                        ['Gorakhpur', 3300],
-                        ['Kanpur', 3550],
-                    ]}
+                    data={this.state.dataOf}
                     options={{
                         title: 'All Population',
                     }}

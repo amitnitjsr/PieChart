@@ -8,18 +8,11 @@ const iState = {
     isAdmin: false,
 };
 
-// const sessionValueSet = (value = false) => {
-
-//     sessionStorage.setItem("isUserLogged", value);
-//     console.log('seession', value)
-// }
-
 const reducer = (state = iState, action) => {
 
     switch (action.type) {
 
         case ActionTypes.signInFun:
-            // sessionValueSet(action.payload.isSignedIn);
             return {
                 "loginData": state.loginData,
                 "list": state.list,

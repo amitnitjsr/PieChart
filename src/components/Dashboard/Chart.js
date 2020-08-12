@@ -1,22 +1,24 @@
 import React from "react";
 import Chart from "react-google-charts";
 import newData from '../../Asset/data/data';
-import './common.css';
 
+const getNormalizeData = (data) => {
+    let tempData = [['City', 'Male Population', 'Female Population']];
+    data.forEach(element => {
+        tempData.push([element.city + ', ' + element.state, element.people.male, element.people.female])
+    });
+    return tempData;
+}
 
 class Charts extends React.Component {
     state = {
-        dataOf: []
+        dataOf: [[]]
     }
+
     componentDidMount() {
-        let tmp = [];
-        tmp = newData.map((val) => {
-            let t = val.city + ',' + val.state + ',' + val.people.male + ',' + val.people.female;
-            return t;
-        });
-        console.log('new...', tmp)
-        this.setState({ dataOf: tmp })
+        this.setState({ dataOf: getNormalizeData(newData) });
     }
+
     render() {
         return (
             <div >
@@ -25,12 +27,7 @@ class Charts extends React.Component {
                     height={'300px'}
                     chartType="BarChart"
                     loader={<div>Loading Chart</div>}
-                    data={[
-                        ['City', 'Male Population', 'Female Population'],
-                        ['Gorakhpur, UP', 1800, 1500],
-                        ['Lucknow, UP', 2000, 2200],
-                        ['Kanpur, UP', 1850, 1700],
-                    ]}
+                    data={this.state.dataOf}
                     options={{
                         title: 'Population of Largest U.P. Cities',
                         chartArea: { width: '50%' },

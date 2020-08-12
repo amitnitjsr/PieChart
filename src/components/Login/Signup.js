@@ -60,7 +60,7 @@ const Signup = props => {
         }
         else if (name === "password") {
             setPassword(value);
-            if (!value.match(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,}$/))
+            if (!value.match(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{5,}$/))
                 setPsw(true)
             else
                 setPsw(false)
