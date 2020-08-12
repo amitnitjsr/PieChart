@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         height: '100vh',
-        overflow: 'auto',
+        // overflow: 'auto',
     },
     container: {
         paddingTop: theme.spacing(4),
@@ -111,11 +111,11 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
         display: 'flex',
-        overflow: 'auto',
+        // overflow: 'auto',
         flexDirection: 'column',
     },
     fixedHeight: {
-        height: 240,
+        height: 350,
     },
 }));
 
@@ -174,8 +174,6 @@ const Dashboard = (props) => {
                 </div>
                 <Divider />
                 <List>{mainListItems}</List>
-                {/* <Divider />
-                <List>{secondaryListItems}</List> */}
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
